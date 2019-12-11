@@ -1,4 +1,4 @@
-#imagine spending 1 hour and 30 minutes trying to find .copy() HAHA fuck
+#imagine spending 1 hour and 30 minutes trying to realise .copy() exists HAHA fuck
 
 original = [int(s) for s in input().split(',')]
 
