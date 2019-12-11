@@ -1,0 +1,3 @@
+[submodule "inputs"]
+	path = inputs
+	url = git@github.com:ray1i/Advent-of-Code-Inputs.git
