@@ -26,32 +26,6 @@ bool values_good(map<string, string> v){
     return false;
 }
 
-//stupid dumb debugging:
-/*
-bool values_good(map<string, string> v){
-    int trues = 0;
-    vector<string> testlist = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"};
-    for (int i = 0; i<testlist.size();i++){
-        cout << v[testlist[i]] << " ";
-    }
-    cout << "| ";
-    cout << (regex_match(v["byr"], regex("[0-9]{4}")) && stoi(v["byr"]) >= 1920 && stoi(v["byr"]) <= 2002);
-    cout << (regex_match(v["iyr"], regex("[0-9]{4}")) && stoi(v["iyr"]) >= 2010 && stoi(v["iyr"]) <= 2020);
-    cout << (regex_match(v["eyr"], regex("[0-9]{4}")) && stoi(v["eyr"]) >= 2020 && stoi(v["eyr"]) <= 2030);
-    if (regex_match(v["hgt"], regex("[0-9]+cm"))){
-        cout << "here1";
-        cout << (stoi(v["hgt"].substr(0, v["hgt"].find("c"))) >= 150 && stoi(v["hgt"].substr(0, v["hgt"].find("c"))) <= 193);
-    } else if (regex_match(v["hgt"], regex("[0-9]+in"))){
-        cout << "here2";
-        cout << (stoi(v["hgt"].substr(0, v["hgt"].find("i"))) >= 59 && stoi(v["hgt"].substr(0, v["hgt"].find("i"))) <= 76);
-    } else cout << 0;
-    cout<< (regex_match(v["hcl"], regex("#([a-z]|[0-9]){6}")));
-    cout << (regex_match(v["ecl"], regex("(amb|blu|brn|gry|grn|hzl|oth)")));
-    cout <<(regex_match(v["pid"], regex("([0-9]{9})")));
-    cout << endl;
-    return false;
-} */
-
 int main(){
     ifstream input;
     input.open("4.txt");
