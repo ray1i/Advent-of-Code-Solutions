@@ -12,7 +12,7 @@ def next_bracket(s):
             c -= 1
         if c == 0:
             return i + 1
-
+#part one:
 def evaluate(s):
     nums = []
     ops = []
@@ -46,6 +46,7 @@ for equation in lines:
 
 print(f'part one: {sum}')
 
+#part two:
 def evaluate2(s):
     nums = []
     ops = []
