@@ -1,5 +1,4 @@
 from sys import stdin
-import re
 
 lines = []
 for line in stdin:
