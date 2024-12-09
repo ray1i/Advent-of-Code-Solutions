@@ -1,4 +1,5 @@
 from sys import stdin
+from timeit import default_timer
 from collections import defaultdict
 
 city = []
@@ -13,6 +14,7 @@ m = len(city)
 n = len(city[0])
 
 # part one
+start_time = default_timer()
 ans = 0
 temp_city = [s.copy() for s in city]
 for c in nodes.keys():
@@ -29,9 +31,11 @@ for c in nodes.keys():
                     temp_city[y1 + my * 2][x1 + mx * 2] = "#"
                     ans += 1
 
-print("part 1:", ans)
+end_time = default_timer()
+print(f"part 1: {ans} (took {(end_time - start_time) * 1000} ms)")
 
 # part two
+start_time = default_timer()
 ans = 0
 temp_city = [s.copy() for s in city]
 for c in nodes.keys():
@@ -50,4 +54,5 @@ for c in nodes.keys():
                     ans += 1
                 l += 1
 
-print("part 2:", ans)
+end_time = default_timer()
+print(f"part 2: {ans} (took {(end_time - start_time) * 1000} ms)")

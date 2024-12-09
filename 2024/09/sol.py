@@ -1,4 +1,5 @@
 from sys import stdin
+from timeit import default_timer
 from collections import defaultdict
 import heapq
 
@@ -20,6 +21,7 @@ for n in nums:
     blank = not blank
 
 # part one
+start_time = default_timer()
 ans = 0
 curr = original.copy()
 end_i = len(curr) - 1
@@ -34,9 +36,11 @@ for i, n in enumerate(curr):
         curr[i], curr[end_i] = curr[end_i], curr[i]
     ans += i * curr[i]
 
-print("part 1:", ans)
+end_time = default_timer()
+print(f"part 1: {ans} (took {(end_time - start_time) * 1000} ms)")
 
 # part two
+start_time = default_timer()
 ans = 0
 curr = original.copy()
 n = 0
@@ -68,4 +72,5 @@ while i >= 0:
 for i, n in enumerate(curr):
     ans += i * n if n != "" else 0
 
-print("part 2:", ans)
+end_time = default_timer()
+print(f"part 2: {ans} (took {(end_time - start_time) * 1000} ms)")

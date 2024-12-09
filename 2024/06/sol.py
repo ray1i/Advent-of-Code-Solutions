@@ -1,4 +1,5 @@
 from sys import stdin
+from timeit import default_timer
 
 obstacle = []
 ogx = -1
@@ -31,6 +32,7 @@ dirs = {
 }
 
 # part one
+start_time = default_timer()
 ans = 0
 gx = ogx
 gy = ogy
@@ -47,10 +49,12 @@ while 0 < gx < n - 1 and 0 < gy < m - 1:
     gx += dirs[d][1]
     gy += dirs[d][0]
 
-print("part 1:", ans)
+end_time = default_timer()
+print(f"part 1: {ans} (took {(end_time - start_time) * 1000} ms)")
 
 
 # part two
+start_time = default_timer()
 ans = 0
 ans_list = set()
 gx = ogx
@@ -110,4 +114,5 @@ while 0 < gx < n - 1 and 0 < gy < m - 1:
     gx += dirs[d][1]
     gy += dirs[d][0]
 
-print("part 2:", ans)
+end_time = default_timer()
+print(f"part 2: {ans} (took {(end_time - start_time) * 1000} ms)")

@@ -1,4 +1,5 @@
 from sys import stdin
+from timeit import default_timer
 from collections import defaultdict
 
 list1 = []
@@ -9,13 +10,16 @@ for line in stdin:
     list2.append(nums[1])
 
 # part one
+start_time = default_timer()
 sum = 0
 for n, m in zip(sorted(list1), sorted(list2)):
     sum += abs(n - m)
 
-print("part 1:", sum)
+end_time = default_timer()
+print(f"part 1: {sum} (took {(end_time - start_time) * 1000} ms)")
 
 # part two
+start_time = default_timer()
 seen = defaultdict(int)
 
 for n in list2:
@@ -25,4 +29,5 @@ sum = 0
 for n in list1:
     sum += n * seen[n]
 
-print("part 2:", sum)
+end_time = default_timer()
+print(f"part 2: {sum} (took {(end_time - start_time) * 1000} ms)")
