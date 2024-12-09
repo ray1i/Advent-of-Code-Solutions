@@ -1,4 +1,5 @@
 from sys import stdin
+from timeit import default_timer
 
 lines = []
 for line in stdin:
@@ -47,12 +48,14 @@ def containsXMAS(x, y):
     return s
 
 
+start_time = default_timer()
 ans = 0
 for i in range(len(lines)):
     for j in range(len(lines[i])):
         ans += containsXMAS(i, j)
 
-print("part 1:", ans)
+end_time = default_timer()
+print(f"part 1: {ans} (took {(end_time - start_time) * 1000} ms)")
 
 
 # part two
@@ -122,8 +125,10 @@ def containsX_MAS(x, y):
 
 
 ans = 0
+start_time = default_timer()
 for i in range(len(lines)):
     for j in range(len(lines[i])):
         ans += containsX_MAS(i, j)
 
-print("part 2:", ans)
+end_time = default_timer()
+print(f"part 2: {ans} (took {(end_time - start_time) * 1000} ms)")

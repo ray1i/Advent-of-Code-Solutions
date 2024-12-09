@@ -1,4 +1,5 @@
 from sys import stdin
+from timeit import default_timer
 from collections import deque
 from math import log10
 
@@ -10,6 +11,7 @@ for line in stdin:
     operands.append([int(n) for n in temp[1].strip().split()])
 
 # part one
+start_time = default_timer()
 ans = 0
 for i in range(len(vals)):
     for b in range(2 ** (len(operands[i]) - 1)):
@@ -23,9 +25,11 @@ for i in range(len(vals)):
             ans += s
             break
 
-print("part 1:", ans)
+end_time = default_timer()
+print(f"part 1: {ans} (took {(end_time - start_time) * 1000} ms)")
 
 # part two
+start_time = default_timer()
 ans = 0
 for i in range(len(vals)):
     q = deque([(operands[i][0], 1)])
@@ -46,5 +50,5 @@ for i in range(len(vals)):
             )
         )
 
-
-print("part 2:", ans)
+end_time = default_timer()
+print(f"part 2: {ans} (took {(end_time - start_time) * 1000} ms)")

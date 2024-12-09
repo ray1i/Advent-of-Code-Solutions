@@ -1,4 +1,5 @@
 from sys import stdin
+from timeit import default_timer
 
 reports = []
 for line in stdin:
@@ -6,6 +7,7 @@ for line in stdin:
     reports.append(nums)
 
 # part one
+start_time = default_timer()
 ans = 0
 for r in reports:
     isInc = r[0] < r[1]
@@ -18,7 +20,8 @@ for r in reports:
             ans -= 1
             break
 
-print("part 1:", ans)
+end_time = default_timer()
+print(f"part 1: {ans} (took {(end_time - start_time) * 1000} ms)")
 
 
 # part two
@@ -34,6 +37,7 @@ def isSafe(levels):
     return True
 
 
+start_time = default_timer()
 ans = 0
 for r in reports:
     if isSafe(r):
@@ -44,4 +48,5 @@ for r in reports:
                 ans += 1
                 break
 
-print("part 2:", ans)
+end_time = default_timer()
+print(f"part 2: {ans} (took {(end_time - start_time) * 1000} ms)")

@@ -1,4 +1,5 @@
 from sys import stdin
+from timeit import default_timer
 from collections import defaultdict
 
 getting_rules = True
@@ -15,6 +16,7 @@ for line in stdin:
         updates.append([int(n) for n in line.strip().split(",")])
 
 # part one
+start_time = default_timer()
 ans = 0
 for u in updates:
     good = True
@@ -24,10 +26,11 @@ for u in updates:
     if good:
         ans += u[len(u) // 2]
 
-print("part 1:", ans)
-
+end_time = default_timer()
+print(f"part 1: {ans} (took {(end_time - start_time) * 1000} ms)")
 
 # part two
+start_time = default_timer()
 ans = 0
 for u in updates:
     good = True
@@ -45,5 +48,5 @@ for u in updates:
     if not good:
         ans += new[len(new) // 2]
 
-
-print("part 2:", ans)
+end_time = default_timer()
+print(f"part 2: {ans} (took {(end_time - start_time) * 1000} ms)")
