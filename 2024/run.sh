@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ $# -ne 2 ]]; then
-    echo Usage: ./run.sh [day] [input-file]
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <day> <input-files...>"
     exit 1
 fi
 
