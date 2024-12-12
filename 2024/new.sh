@@ -16,7 +16,7 @@ if [ -d $DAY ]; then
     fi
 fi
 
-if rm -r ./$DAY; then
+if [ -d $DAY ] && rm -r ./$DAY; then
     echo "removed existing ./$DAY"
 fi
 
