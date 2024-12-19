@@ -24,5 +24,3 @@ mkdir $DAY
 cp -r template/. $DAY
 
 echo "done."
-
-
