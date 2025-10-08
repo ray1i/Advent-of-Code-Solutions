@@ -29,8 +29,10 @@ fn part1(input: &str) -> i32 {
         }
 
         // does not contain ab, cd, pq, xy
-        const FORBIDDEN: [&str; 4] = ["ab", "cd", "pq", "xy"];
-        if FORBIDDEN.iter().any(|bad| string.contains(bad)) {
+        if ["ab", "cd", "pq", "xy"]
+            .iter()
+            .any(|bad| string.contains(bad))
+        {
             return false;
         }
 
