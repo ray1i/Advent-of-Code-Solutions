@@ -1,9 +1,9 @@
 use std::fs;
 use std::time::Instant;
 
-use lazy_static::lazy_static;
 use regex::Regex;
 use std::collections::HashMap;
+use std::sync::LazyLock;
 
 const INPUT_FILE: &str = "input/07.txt";
 
@@ -18,15 +18,16 @@ enum Definition {
     Rshift(String, i32),
 }
 
-lazy_static! {
-    static ref NUM_VALUE_RE: Regex = Regex::new(r"^(\d+) -> (\w+)$").unwrap();
-    static ref REF_VALUE_RE: Regex = Regex::new(r"^(\w+) -> (\w+)$").unwrap();
-    static ref NOT_RE: Regex = Regex::new(r"^NOT (\w+) -> (\w+)$").unwrap();
-    static ref AND_RE: Regex = Regex::new(r"^(\w+) AND (\w+) -> (\w+)$").unwrap();
-    static ref OR_RE: Regex = Regex::new(r"^(\w+) OR (\w+) -> (\w+)$").unwrap();
-    static ref LSHIFT_RE: Regex = Regex::new(r"^(\w+) LSHIFT (\w+) -> (\w+)$").unwrap();
-    static ref RSHIFT_RE: Regex = Regex::new(r"^(\w+) RSHIFT (\w+) -> (\w+)$").unwrap();
-}
+static NUM_VALUE_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^(\d+) -> (\w+)$").unwrap());
+static REF_VALUE_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^(\w+) -> (\w+)$").unwrap());
+static NOT_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^NOT (\w+) -> (\w+)$").unwrap());
+static AND_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"^(\w+) AND (\w+) -> (\w+)$").unwrap());
+static OR_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^(\w+) OR (\w+) -> (\w+)$").unwrap());
+static LSHIFT_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"^(\w+) LSHIFT (\w+) -> (\w+)$").unwrap());
+static RSHIFT_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"^(\w+) RSHIFT (\w+) -> (\w+)$").unwrap());
 
 impl Definition {
     fn from(line: &str) -> Definition {
