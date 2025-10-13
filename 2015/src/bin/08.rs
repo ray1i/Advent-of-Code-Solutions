@@ -13,13 +13,13 @@ static DECODE_RE: LazyLock<Regex> =
 struct EscapeReplacer;
 impl Replacer for EscapeReplacer {
     fn replace_append(&mut self, caps: &regex::Captures<'_>, dst: &mut String) {
-        if let Some(_) = caps.get(1) {
-            dst.push_str("\\");
-        } else if let Some(_) = caps.get(2) {
-            dst.push_str("\"");
+        if caps.get(1).is_some() {
+            dst.push('\\');
+        } else if caps.get(2).is_some() {
+            dst.push('"');
         } else if let Some(_hex_match) = caps.get(3) {
             let _hex = caps.get(4).unwrap().as_str();
-            dst.push_str("a"); // placeholder for now
+            dst.push('a'); // placeholder for now
         }
     }
 }
@@ -32,12 +32,15 @@ fn decode_input(input: &str) -> Vec<String> {
 }
 
 fn part1(input: &str) -> i32 {
-    let code_len = input.lines().map(|line| line.len() as i32).sum::<i32>();
+    let code_len = input
+        .lines()
+        .map(|line| i32::try_from(line.len()).unwrap())
+        .sum::<i32>();
 
     let decoded = decode_input(input);
     let string_len = decoded
         .iter()
-        .map(|line| line.len() as i32 - 2)
+        .map(|line| i32::try_from(line.len()).unwrap() - 2)
         .sum::<i32>();
 
     // println!("code: {code_len}, string: {string_len}");
@@ -66,10 +69,13 @@ fn part2(input: &str) -> i32 {
     let encoded = encode_input(input);
     let encoded_len = encoded
         .iter()
-        .map(|line| line.len() as i32 + 2)
+        .map(|line| i32::try_from(line.len()).unwrap() + 2)
         .sum::<i32>();
 
-    let code_len = input.lines().map(|line| line.len() as i32).sum::<i32>();
+    let code_len = input
+        .lines()
+        .map(|line| i32::try_from(line.len()).unwrap())
+        .sum::<i32>();
 
     // println!("encoded: {encoded_len}, code: {code_len}");
     encoded_len - code_len
