@@ -106,11 +106,11 @@ fn main() {
 
     let input = fs::read_to_string(INPUT_FILE).expect("couldn't read file");
 
-    let start_time_1 = Instant::now();
+    let start_time = Instant::now();
     let ans = part1(&input);
-    println!("part 1: {} (took {:.5?})", ans, start_time_1.elapsed());
+    println!("part 1: {} (took {:.5?})", ans, start_time.elapsed());
 
-    let start_time_2 = Instant::now();
+    let start_time = Instant::now();
     let ans = part2(&input);
-    println!("part 2: {} (took {:.5?})", ans, start_time_2.elapsed());
+    println!("part 2: {} (took {:.5?})", ans, start_time.elapsed());
 }
