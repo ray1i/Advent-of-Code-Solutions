@@ -6,7 +6,7 @@ My solutions for Advent of Code
 
 | Year | Stars | Language   |
 | ---- | ----- | ---------- |
-| 2015 | 20    | Rust       |
+| 2015 | 22    | Rust       |
 | 2016 | 0     |
 | 2017 | 0     |
 | 2018 | 0     |
