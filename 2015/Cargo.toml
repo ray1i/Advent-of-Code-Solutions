@@ -4,5 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+fera = { version = "0.2.0", features = ["unionfind"] }
+itertools = "0.14.0"
 md5 = "0.8.0"
 regex = "1.11.3"
