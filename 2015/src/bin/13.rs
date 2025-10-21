@@ -21,8 +21,8 @@ fn parse(input: &str) -> HashMap<String, HashMap<String, i32>> {
         let name2 = matches[4].to_string();
         let num: i32 = matches[3].parse().unwrap();
 
-        adj.entry(name1.clone()).or_insert(HashMap::new());
-        adj.entry(name2.clone()).or_insert(HashMap::new());
+        adj.entry(name1.clone()).or_default();
+        adj.entry(name2.clone()).or_default();
 
         match &matches[2] {
             "gain" => {
@@ -67,12 +67,9 @@ fn part2(input: &str) -> i32 {
         ans = max(
             ans,
             path.iter()
-                .cloned()
-                .chain([&path[0].clone()]) // stupid
-                .collect::<Vec<_>>()
-                .windows(2)
-                .map(|window| -> [&String; 2] { window.try_into().unwrap() })
-                .fold(0, |acc, [name1, name2]| {
+                .copied()
+                .circular_tuple_windows::<(_, _)>()
+                .fold(0, |acc, (name1, name2)| {
                     acc + adj.get(name1).and_then(|x| x.get(name2)).unwrap_or(&0)
                         + adj.get(name2).and_then(|x| x.get(name1)).unwrap_or(&0)
                 }),
