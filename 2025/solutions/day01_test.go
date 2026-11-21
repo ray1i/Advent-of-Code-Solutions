@@ -15,8 +15,9 @@ L1
 L99
 R14
 L82`
+	d := Day01{}
 	expected := 3
-	actual := Day01Part1(input)
+	actual := d.Part1(input)
 	if expected != actual {
 		t.Errorf("expected %d, actual %d", expected, actual)
 	}
@@ -33,14 +34,15 @@ L1
 L99
 R14
 L82`
+	d := Day01{}
 	expected := 6
-	actual := Day01Part2(input)
+	actual := d.Part2(input)
 	if expected != actual {
 		t.Errorf("expected %d, actual %d", expected, actual)
 	}
 
 
-	asdf := Day01Part2("R1000")
+	asdf := d.Part2("R1000")
 	if asdf != 10 {
 		t.Errorf("for 1000, expected 10, actual %d", asdf)
 	}

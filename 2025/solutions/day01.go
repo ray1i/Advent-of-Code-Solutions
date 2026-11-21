@@ -1,10 +1,11 @@
 package solutions
 
 import (
-	// "fmt"
 	"strings"
 	"strconv"
 )
+
+type Day01 struct {}
 
 func parse(input string) []int {
 	rotations := []int{}
@@ -27,7 +28,7 @@ func parse(input string) []int {
 	return rotations
 }
 
-func Day01Part1(input string) int {
+func (_ Day01) Part1(input string) int {
 	rotations := parse(input)
 	ans := 0
 	curr := 50
@@ -40,7 +41,7 @@ func Day01Part1(input string) int {
 	return ans
 }
 
-func Day01Part2(input string) int {
+func (_ Day01) Part2(input string) int {
 	rotations := parse(input)
 	ans := 0
 	curr := 50

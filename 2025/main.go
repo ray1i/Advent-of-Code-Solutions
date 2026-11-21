@@ -8,11 +8,16 @@ import (
 	"solutions"
 )
 
-func timer(name string) func() {
-	start := time.Now()
-	return func() {
-	      fmt.Printf("[%s]: %s\n", name, time.Since(start))
-	}
+func runWithTimer(title string, fn func() int) {
+	var start time.Time
+	var ans int
+
+	defer func() {
+	      fmt.Printf("[%s] %d (took %s)\n", title, ans, time.Since(start))
+	}()
+
+	start = time.Now()
+	ans = fn()
 }
 
 func main() {
@@ -26,11 +31,15 @@ func main() {
 	input_b, _ := os.ReadFile(inputFile)
 	input := string(input_b)
 
-	defer timer("day01")()
-	solution := solutions.Day01Part1(input)
-	fmt.Println(solution)
-	
-	defer timer("day01part2")()
-	solution = solutions.Day01Part2(input)
-	fmt.Println(solution)
+	var solution solutions.Solution
+
+	switch day {
+	case "01": solution = solutions.Day01{}
+	default:
+		fmt.Println("not a valid day.")
+		os.Exit(1)
+	}
+
+	runWithTimer("part 1", func() int { return solution.Part1(input) })
+	runWithTimer("part 2", func() int { return solution.Part2(input) })
 }
