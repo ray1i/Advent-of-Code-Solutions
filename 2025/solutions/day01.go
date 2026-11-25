@@ -7,7 +7,7 @@ import (
 
 type Day01 struct {}
 
-func parse(input string) []int {
+func (d Day01) parse(input string) []int {
 	rotations := []int{}
 	_ = rotations
 	for line := range strings.Lines(input) {
@@ -28,8 +28,8 @@ func parse(input string) []int {
 	return rotations
 }
 
-func (_ Day01) Part1(input string) int {
-	rotations := parse(input)
+func (d Day01) Part1(input string) int {
+	rotations := d.parse(input)
 	ans := 0
 	curr := 50
 	for _, r := range rotations {
@@ -41,8 +41,8 @@ func (_ Day01) Part1(input string) int {
 	return ans
 }
 
-func (_ Day01) Part2(input string) int {
-	rotations := parse(input)
+func (d Day01) Part2(input string) int {
+	rotations := d.parse(input)
 	ans := 0
 	curr := 50
 	for _, r := range rotations {

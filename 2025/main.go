@@ -35,6 +35,7 @@ func main() {
 
 	switch day {
 	case "01": solution = solutions.Day01{}
+	case "02": solution = solutions.Day02{}
 	default:
 		fmt.Println("not a valid day.")
 		os.Exit(1)
