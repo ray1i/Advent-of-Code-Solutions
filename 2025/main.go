@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"os"
+	"time"
 
 	"solutions"
+	_ "solutions/all"
 )
 
 func runWithTimer(title string, fn func() int) {
@@ -13,7 +14,7 @@ func runWithTimer(title string, fn func() int) {
 	var ans int
 
 	defer func() {
-	      fmt.Printf("[%s] %d (took %s)\n", title, ans, time.Since(start))
+		fmt.Printf("[%s] %d (took %s)\n", title, ans, time.Since(start))
 	}()
 
 	start = time.Now()
@@ -27,17 +28,13 @@ func main() {
 	}
 
 	day := os.Args[1]
-	inputFile := fmt.Sprintf("./input/%s.txt", day)
+	inputFile := fmt.Sprintf("./solutions/day%s/input.txt", day)
 	input_b, _ := os.ReadFile(inputFile)
 	input := string(input_b)
 
-	var solution solutions.Solution
-
-	switch day {
-	case "01": solution = solutions.Day01{}
-	case "02": solution = solutions.Day02{}
-	default:
-		fmt.Println("not a valid day.")
+	solution, ok := solutions.GetSolution(day)
+	if !ok {
+		fmt.Printf("day %s not found\n", day)
 		os.Exit(1)
 	}
 

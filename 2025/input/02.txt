@@ -1,1 +1,0 @@
-../../inputs/2025/solutions/day02/input.txt

@@ -1,13 +1,13 @@
-package solutions
+package day01
 
 import (
-	"strings"
 	"strconv"
+	"strings"
+
+	"solutions"
 )
 
-type Day01 struct {}
-
-func (d Day01) parse(input string) []int {
+func parse(input string) []int {
 	rotations := []int{}
 	_ = rotations
 	for line := range strings.Lines(input) {
@@ -28,8 +28,8 @@ func (d Day01) parse(input string) []int {
 	return rotations
 }
 
-func (d Day01) Part1(input string) int {
-	rotations := d.parse(input)
+func part1(input string) int {
+	rotations := parse(input)
 	ans := 0
 	curr := 50
 	for _, r := range rotations {
@@ -41,8 +41,8 @@ func (d Day01) Part1(input string) int {
 	return ans
 }
 
-func (d Day01) Part2(input string) int {
-	rotations := d.parse(input)
+func part2(input string) int {
+	rotations := parse(input)
 	ans := 0
 	curr := 50
 	for _, r := range rotations {
@@ -68,3 +68,40 @@ func (d Day01) Part2(input string) int {
 	return ans
 
 }
+
+var part1tests = []solutions.PartTest{
+	{
+		Input: `L68
+L30
+R48
+L5
+R60
+L55
+L1
+L99
+R14
+L82`,
+		Output: 3,
+	},
+}
+var part2tests = []solutions.PartTest{
+	{
+		Input: `L68
+L30
+R48
+L5
+R60
+L55
+L1
+L99
+R14
+L82`,
+		Output: 6,
+	},
+	{
+		Input:  "R1000",
+		Output: 10,
+	},
+}
+
+func init() { solutions.Register("01", part1, part2, part1tests, part2tests) }
